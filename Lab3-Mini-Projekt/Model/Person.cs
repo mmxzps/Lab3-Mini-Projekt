@@ -1,4 +1,5 @@
 ﻿using Lab3_Mini_Projekt.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace Lab3_Mini_Projekt.Model
@@ -32,12 +33,22 @@ namespace Lab3_Mini_Projekt.Model
 
         public static IResult OnePersonAllInfo(ApplicationContext context, int id)
         {
-            Person? person = context.Persons.Where(p => p.Id == id).FirstOrDefault();
+            Person? person = context.Persons.Where(p => p.Id == id).Include(p=> p.Interests).Include(p => p.InterestWebLinks).FirstOrDefault();
             if (person == null)
             {
                 return Results.NotFound();
             }
-            return Results.Json(person);
+            var personView = new PersonView()
+            {
+                Id = person.Id,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                PhoneNumber = person.PhoneNumber,
+                Interest = person.Interests.Select(i => new InterestView { Id = i.Id, InterestName = i.InterestName, InterestDescription = i.InterestDescription }).ToArray(),
+                InterestWebLinks = person.InterestWebLinks.Select(i => new InterestWebLinkView { Id = i.Id, Link = i.Link }).ToArray()
+
+            };
+            return Results.Json(personView);
         }
     }
 }
