@@ -14,7 +14,7 @@ namespace Lab3_Mini_Projekt.Model
         public virtual Person Persons { get; set; }
 
 
-        //Adding weblinks
+        //Adding weblinks connected to a person
         public static IResult AddWebLink(ApplicationContext context, InterestWebLink interestWebLink, int personId, int interestId)
         {
             //fetching the person with matching id

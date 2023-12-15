@@ -31,6 +31,8 @@ namespace Lab3_Mini_Projekt
             //----------------------INTEREST
             //Adding interests
             app.MapPost("/Interest", Interest.AddInterest);
+            //Adding interests
+            app.MapPost("/Interest/{personId}", Interest.AddInterestToPerson);
             //Showing all interesets
             app.MapGet("/Interest", Interest.ShowAllObjects);
 
