@@ -20,7 +20,7 @@ namespace Lab3_Mini_Projekt
 
 
             //--------------------PERSON
-            //Creating a person.
+            //Creating a person
             app.MapPost("/Person", Person.AddPerson);
             //Showing all objects in "Person" with their firstname
             app.MapGet("/Person", Person.ShowAllObjects);
