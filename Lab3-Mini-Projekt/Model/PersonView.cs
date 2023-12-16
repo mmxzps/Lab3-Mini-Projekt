@@ -1,5 +1,6 @@
 ﻿namespace Lab3_Mini_Projekt.Model
 {
+    //Created to be able to show all the information for this class
     public class PersonView
     {
         public int Id { get; set; }

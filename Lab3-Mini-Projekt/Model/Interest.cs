@@ -1,4 +1,5 @@
 ﻿using Lab3_Mini_Projekt.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace Lab3_Mini_Projekt.Model
@@ -13,20 +14,16 @@ namespace Lab3_Mini_Projekt.Model
         public virtual ICollection<Person> Persons { get; set; }
         public virtual ICollection<InterestWebLink> InterestWebLinks { get; set; }
 
-        //Adding interest
         public static IResult AddInterest(ApplicationContext context, Interest interest)
         {
             context.Interests.Add(interest);
             context.SaveChanges();
             return Results.StatusCode((int)HttpStatusCode.Created);
         }
-
-        //Showing objects in interest
         public static IResult ShowAllObjects(ApplicationContext context)
         {
             return Results.Json(context.Interests.Select(p => new { p.Id, p.InterestName }).ToArray());
         }
-        //Adding intereset to a specifik person by their id
         public static IResult AddInterestToPerson(ApplicationContext context, Interest interest, int personId)
         {
             //fetching the person with matching id
@@ -45,5 +42,21 @@ namespace Lab3_Mini_Projekt.Model
             context.SaveChanges();
             return Results.StatusCode((int)HttpStatusCode.Created);
         }
+        public static IResult ShowInterestOfOnePerson(ApplicationContext context, int personId)
+        {   //Fetching the person with given id and include its interests
+            Person? person = context.Persons.Where(p=>p.Id == personId).Include(p=>p.Interests).FirstOrDefault();
+            if (person == null)
+            {
+                return Results.NotFound();
+            }
+            //fetching persons interests and creating a view of them with their Id, interestName and description.
+            var interestView = person.Interests.Select(theInterest => new InterestView()
+            {
+                Id = theInterest.Id,
+                InterestName = theInterest.InterestName,
+                InterestDescription = theInterest.InterestDescription,
+            }).ToArray();
+            return Results.Json(interestView);
+        }  
     }
 }

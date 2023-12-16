@@ -13,8 +13,6 @@ namespace Lab3_Mini_Projekt.Model
         public virtual Interest Interests { get; set; }
         public virtual Person Persons { get; set; }
 
-
-        //Adding weblinks connected to a person
         public static IResult AddWebLink(ApplicationContext context, InterestWebLink interestWebLink, int personId, int interestId)
         {
             //fetching the person with matching id
@@ -35,12 +33,24 @@ namespace Lab3_Mini_Projekt.Model
             context.SaveChanges();
             return Results.StatusCode((int)HttpStatusCode.Created);
         }
-
-
-        //Showing all links
         public static IResult ShowAllWebLinks(ApplicationContext context)
         {
             return Results.Json(context.InterestWebLinks.Select(p => new { p.Id, p.Link }).ToArray());
+        }
+        public static IResult ShowLinksOfOnePerson(ApplicationContext context, int personId)
+        {   //Fetching the person with given id and include its weblinks
+            Person? person = context.Persons.Where(p=>p.Id == personId).Include(p=>p.InterestWebLinks).FirstOrDefault();
+            if (person == null)
+            {
+                return Results.NotFound();
+            }
+            //fetching persons weblinks and creating a view of them.
+            var intersetWebLinkView = person.InterestWebLinks.Select(theLink => new InterestWebLinkView()
+            {
+                Id = theLink.Id,
+                Link = theLink.Link,
+            }).ToArray();
+            return Results.Json(intersetWebLinkView);
         }
     }
 }
