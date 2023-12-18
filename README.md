@@ -1,8 +1,10 @@
 ﻿My first minimal API project
  ## ER diagram of the database
-![ER-diagram--api](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/f615ee7f-bf52-421c-88cb-d1c0dbf45f37)
+![ER-minial-API-projekt - Sida 2](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/542979ce-4f24-4b5b-902e-450d1cb5048f)
 ## UML diagram of the program
-![UML-Class-Diagram-mini-api](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/bae87eed-338c-4b43-80a8-7817686b834e)
+![UML-minial-API-projekt - Page 1](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/d3b6ac19-d130-405a-948f-73e30c8fd0f6)
+
+
 
 
 
