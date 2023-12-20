@@ -1,4 +1,3 @@
-
 ---
 
 <p align="center">
@@ -7,91 +6,127 @@
 
 ***
 <BR>
-<BR>
-<BR>
 
-## 💡Call commands to interact with the API
+# <div align="center">💡Call commands to interact with the API</div>
 
-### 🔷Person calls
+## 🔷Person calls
 
-> 
+>**➡️Add new person**
+><BR>
+>🔸*Use the endpoint "/person"*
+><BR>
+>🔸*E.G. → **POST**: http://localhost:5136/person*
+>>**Input:**
+>><BR> 
+>>![addperson](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/6e095ebb-b242-4f15-abb6-1863ab3172ef)
+>><BR> 
+>>**Output:**
+>><BR> 
+>>![201Created](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/8e4faa12-a855-4ff6-bbf6-3f965761838d)
+>>
+><BR> 
+
+>**➡️Show all persons**
+> <BR>
+>🔸*Use the endpoint "/person/persons/"*
+><br>
+>🔸*E.G. → **GET**: http://localhost:5136/person/persons/*
+>>**Output:**
+>><BR> 
+>> ![ShowAllPersons](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/797fb8c6-f0ae-42ee-93a4-9d88a011e854)
 >
->**Show all persons**
-> <BR>
->🔸*Use the endpoint "/Person"*
-><br>
->🔸*E.G. → **GET**: http://localhost:5136/Person*
 ><BR>
->**Show one person**
-><BR>
->🔸*Use the endpoint "/Person/PersonId"*
-><BR>
->🔸*E.G. → **GET**: http://localhost:5136/Person/1003*
-><BR>
->**Add new person**
-><BR>
->🔸*Use the endpoint "/Person"*
-><BR>
->🔸*E.G. → **POST**: http://localhost:5136/Person*
->```json
-> {
->	"firstname":"Jon",
->	"lastname":"Doe",
->	"PhoneNumber": "0739097412"
->}
->```
-><BR>
-### 🔷Interest calls
->**Show all Interest**
-> <BR>
->🔸*Use the endpoint "/Interest"*
-><br>
->🔸*E.G. → **GET**: http://localhost:5136/Interest*
-><BR>
->**Show all interests connected to one person**
-> <BR>
->🔸*Use the endpoint "/Interest/Interests/PersonId"*
-><br>
->🔸*E.G. → **GET**: http://localhost:5136/Interest/interests/1003*
-><BR>
->**Add interest to one person**
-> <BR>
->🔸*Use the endpoint "/Interest/PersonId"*
-><br>
->🔸*E.G. → **POST**: http://localhost:5136/Interest/1003*
->```json
->{
->	"interestname": "C#",
->	"InterestDescription":"C# is a programming language developed by Microsoft that runs on the .NET Framework."
->}
->```
-><BR>
+>
 
-### 🔷WebLink calls
->**Show all WebLinks**
-> <BR>
->🔸*Use the endpoint "/InterestWebLink"*
-><br>
->🔸*E.G. → **GET**: http://localhost:5136/InterestWebLink*
+>**➡️Show all information of one person**
 ><BR>
->**Show all WebLinks connected to one person**
-> <BR>
->🔸*Use the endpoint "/InterestWebLink/links/PersonId"*
-><br>
->🔸*E.G. → **GET**: http://localhost:5136/InterestWebLink/links/1003*
+>🔸*Use the endpoint "/person/person-id"*
 ><BR>
->**Add WebLinks to one person and their interest**
+>🔸*E.G. → **GET**: http://localhost:5136/person/1*
+>>**Output:**
+>><BR> 
+>>![ShowOnePerson](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/33d874da-6a70-4b43-953a-1a7cdb149dc4)
+>
+><BR>
+>
+
+>**➡️Add interest to one person**
 > <BR>
->🔸*Use the endpoint "/InterestWebLink/PersonId/InterestId"*
+>🔸*Use the endpoint "/person/person-id/interest"*
 ><br>
->🔸*E.G. → **POST**: http://localhost:5136/InterestWebLink/1003/1015*
->```json
->{
->	"link":"https://www.w3schools.com/cs/index.php",
->	"PersonId":1003,
->	"interestId":1015
->}
->```
+>🔸*E.G. → **POST**: http://localhost:5136/person/1/interest*
+>>**Input:**
+>><BR> 
+>>![AddInterestToOnePerson](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/16c78d35-ecd2-43be-bc21-89ab8f7097b7)
+>><BR> 
+>>**Output:**
+>><BR> 
+>>![201Created](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/8e4faa12-a855-4ff6-bbf6-3f965761838d)
+>>
+><BR> 
+
+>**➡️Show all interests connected to one person**
+> <BR>
+>🔸*Use the endpoint "/person/person-id/interests"*
+><br>
+>🔸*E.G. → **GET**: http://localhost:5136/person/1/interests*
+>>**Output:**
+>><BR> 
+>>![ShowAllInterestOfOnePerson](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/ab8be628-4ab6-4f8a-8221-5d08524cd8ca)
+>>
+><BR> 
+
+>**➡️Add WebLinks to one person and their interest**
+> <BR>
+>🔸*Use the endpoint "/person/person-id/interest-id/interest-web-link"*
+><br>
+>🔸*E.G. → **POST**: http://localhost:5136/person/person-id/interest-id/interest-web-link*
+>>**Input:**
+>><BR> 
+>>![AddWebLinkToPersonAndInterest](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/f9c8dc44-589e-4fc8-8aec-f212fd0e98f8)
+>><BR> 
+>>**Output:**
+>><BR> 
+>>![201Created](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/8e4faa12-a855-4ff6-bbf6-3f965761838d)
+>
+><BR> 
+
+>**➡️Show all WebLinks connected to one person**
+> <BR>
+>🔸*Use the endpoint "/person/person-id/interest-web-link/links"*
+><br>
+>🔸*E.G. → **GET**: http://localhost:5136/person/person-id/interest-web-link/links*
+>>**Output:**
+>><BR> 
+>>![ShowAllWebLinksOfOnePerson](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/5ea9b2e9-9105-47c4-99ee-3a546a01c92c)
+>>
+><BR> 
+><BR> 
+
+## 🔷Interest calls
+>**➡️Show all Interest**
+> <BR>
+>🔸*Use the endpoint "/interests"*
+><br>
+>🔸*E.G. → **GET**: http://localhost:5136/interests*
+>>**Output:**
+>><BR> 
+>>![ShowAllInterests](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/d47034f8-2b66-4977-9807-733499e24dc5)
+>>
+><BR> 
+><BR> 
+
+## 🔷WebLink calls
+>**➡️Show all WebLinks**
+> <BR>
+>🔸*Use the endpoint "/interest-web-links"*
+><br>
+>🔸*E.G. → **GET**: http://localhost:5136/interest-web-links*
+>>**Output:**
+>><BR> 
+>>![ShowAllWebLinks](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/dd786ee6-0a1b-4e71-99f3-764fb0df66ee)
+>>
+><BR> 
 ><BR>
 
  ## ER diagram of the database
