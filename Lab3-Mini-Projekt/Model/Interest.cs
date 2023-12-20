@@ -27,7 +27,7 @@ namespace Lab3_Mini_Projekt.Model
         public static IResult AddInterestToPerson(ApplicationContext context, Interest interest, int personId)
         {
             //fetching the person with matching id
-            var person = context.Persons.FirstOrDefault(p => p.Id == personId);
+            var person = context.Persons.Include(p => p.Interests).FirstOrDefault(p => p.Id == personId);
             if (person == null)
             {
                 return Results.NotFound();

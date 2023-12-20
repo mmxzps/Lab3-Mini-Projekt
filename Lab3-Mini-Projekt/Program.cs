@@ -18,34 +18,33 @@ namespace Lab3_Mini_Projekt
 
             app.MapGet("/", () => "Hello World!");
 
-
             //--------------------PERSON
             //Creating a person
-            app.MapPost("/Person", Person.AddPerson);
+            app.MapPost("/person", Person.AddPerson);
             //Showing all objects in "Person" with their firstname
-            app.MapGet("/Person", Person.ShowAllObjects);
+            app.MapGet("/person/persons", Person.ShowAllObjects);
             //Showing all information of one person
-            app.MapGet("/Person/{personId}", Person.OnePersonAllInfo);
+            app.MapGet("/person/{personId}", Person.OnePersonAllInfo);
+            //Adding interests to one person
+            app.MapPost("/person/{personId}/interest", Interest.AddInterestToPerson);
+            //Showing all interesets of one person
+            app.MapGet("/person/{personId}/interests", Interest.ShowInterestOfOnePerson);
+            //adding webLink connected to the person and interest.
+            app.MapPost("/person/{personId}/{interestId}/interest-web-link", InterestWebLink.AddWebLink);
+            //Showing all links of one person
+            app.MapGet("/person/{personId}/interest-web-link/links", InterestWebLink.ShowLinksOfOnePerson);
 
 
             //----------------------INTEREST
             //Adding interests
-            app.MapPost("/Interest", Interest.AddInterest);
-            //Adding interests to one person
-            app.MapPost("/Interest/{personId}", Interest.AddInterestToPerson);
-            //Showing all interesets
-            app.MapGet("/Interest", Interest.ShowAllObjects);
-            //Showing all interesets of one person
-            app.MapGet("/Interest/Interests/{personId}", Interest.ShowInterestOfOnePerson);
+            app.MapPost("/interest", Interest.AddInterest);
 
+            //Showing all interesets
+            app.MapGet("/interest/interests", Interest.ShowAllObjects);
 
             //--------------------- Links
-            //adding webLink connected to the person and interest.
-            app.MapPost("/InterestWebLink/{personId}/{interestId}", InterestWebLink.AddWebLink);
             //Showing all webblinks
-            app.MapGet("/InterestWebLink", InterestWebLink.ShowAllWebLinks);
-            //Showing all links of one person
-            app.MapGet("/InterestWebLink/Links/{personId}", InterestWebLink.ShowLinksOfOnePerson);
+            app.MapGet("/interest-web-links", InterestWebLink.ShowAllWebLinks);
 
             app.Run();
         }

@@ -13,12 +13,6 @@ namespace Lab3_Mini_Projekt.Model
 
         public virtual ICollection<Interest> Interests { get; set; }
         public virtual ICollection<InterestWebLink> InterestWebLinks { get; set; }
-        //question
-        public Person()
-        {
-            Interests = new List<Interest>();
-            InterestWebLinks = new List<InterestWebLink>();
-        }
 
         public static IResult ShowAllObjects(ApplicationContext context)
         {
