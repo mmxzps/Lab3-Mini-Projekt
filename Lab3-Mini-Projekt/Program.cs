@@ -21,16 +21,22 @@ namespace Lab3_Mini_Projekt
             //--------------------PERSON
             //Creating a person
             app.MapPost("/person", Person.AddPerson);
+
             //Showing all objects in "Person" with their firstname
             app.MapGet("/person/persons", Person.ShowAllObjects);
+
             //Showing all information of one person
             app.MapGet("/person/{personId}", Person.OnePersonAllInfo);
+
             //Adding interests to one person
             app.MapPost("/person/{personId}/interest", Interest.AddInterestToPerson);
+
             //Showing all interesets of one person
             app.MapGet("/person/{personId}/interests", Interest.ShowInterestOfOnePerson);
+
             //adding webLink connected to the person and interest.
             app.MapPost("/person/{personId}/{interestId}/interest-web-link", InterestWebLink.AddWebLink);
+
             //Showing all links of one person
             app.MapGet("/person/{personId}/interest-web-link/links", InterestWebLink.ShowLinksOfOnePerson);
 
@@ -40,7 +46,7 @@ namespace Lab3_Mini_Projekt
             app.MapPost("/interest", Interest.AddInterest);
 
             //Showing all interesets
-            app.MapGet("/interest/interests", Interest.ShowAllObjects);
+            app.MapGet("/interests", Interest.ShowAllObjects);
 
             //--------------------- Links
             //Showing all webblinks
