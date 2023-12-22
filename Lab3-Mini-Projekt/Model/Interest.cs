@@ -35,7 +35,6 @@ namespace Lab3_Mini_Projekt.Model
 
             //adding the link connected to the person and interest.
             var theInterest = new Interest { InterestName = interest.InterestName, InterestDescription = interest.InterestDescription };
-            //context.Interests.Add(theInterest);
 
             //adding the interest to the person.
             person.Interests.Add(theInterest);
