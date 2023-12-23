@@ -31,6 +31,9 @@ namespace Lab3_Mini_Projekt
             //Adding interests to one person
             app.MapPost("/person/{personId}/interest", Interest.AddInterestToPerson);
 
+            //connecting a person to a interest
+            app.MapPost("/person/{personId}/interests/{interestId}", Interest.ConnectPersonToInterest);
+
             //Showing all interesets of one person
             app.MapGet("/person/{personId}/interests", Interest.ShowInterestOfOnePerson);
 

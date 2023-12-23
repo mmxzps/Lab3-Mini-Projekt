@@ -41,9 +41,21 @@ namespace Lab3_Mini_Projekt.Model
             context.SaveChanges();
             return Results.StatusCode((int)HttpStatusCode.Created);
         }
+        public static IResult ConnectPersonToInterest(ApplicationContext context, int personId, int interestId)
+        {
+            //fetching the interest with matching id
+            Interest interest = context.Interests.Where(i => i.Id == interestId).Single();
+            //fetching the person + their intereset with matching id 
+            Person person = context.Persons.Include(p => p.Interests).Single(p => p.Id == personId);
+
+            //adding the interest to the person
+            person.Interests.Add(interest);
+            context.SaveChanges();
+            return Results.StatusCode((int)HttpStatusCode.OK);
+        }
         public static IResult ShowInterestOfOnePerson(ApplicationContext context, int personId)
         {   //Fetching the person with given id and include its interests
-            Person? person = context.Persons.Where(p=>p.Id == personId).Include(p=>p.Interests).FirstOrDefault();
+            Person? person = context.Persons.Where(p => p.Id == personId).Include(p => p.Interests).FirstOrDefault();
             if (person == null)
             {
                 return Results.NotFound();
@@ -56,6 +68,6 @@ namespace Lab3_Mini_Projekt.Model
                 InterestDescription = theInterest.InterestDescription,
             }).ToArray();
             return Results.Json(interestView);
-        }  
+        }
     }
 }
