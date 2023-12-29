@@ -102,7 +102,7 @@
 >🔸*E.G. → **POST**: http://localhost:5136/person/person-id/interest-id/interest-web-link*
 >>**Input:**
 >><BR> 
->>![AddWebLinkToPersonAndInterest](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/f9c8dc44-589e-4fc8-8aec-f212fd0e98f8)
+>>![AddWebLinkToPersonAndInterest](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/b1a28aec-236a-415c-b355-c9d7094ce791)
 >><BR>
 >>
 >>**Output:**
