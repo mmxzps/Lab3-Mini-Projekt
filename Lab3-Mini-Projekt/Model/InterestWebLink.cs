@@ -16,16 +16,16 @@ namespace Lab3_Mini_Projekt.Model
         public static IResult AddWebLink(ApplicationContext context, InterestWebLink interestWebLink, int personId, int interestId)
         {
             //fetching the person with matching id
-            var person = context.Persons.FirstOrDefault(p => p.Id == personId);
+            Person? person = context.Persons.SingleOrDefault(p => p.Id == personId);
             if (person == null)
             {
-                return Results.NotFound();
+                return Results.NotFound($"Person with id:{personId} not found!");
             }
             //fetching the interest with matching id
-            var interest = context.Interests.FirstOrDefault(i => i.Id == interestId);
+            Interest? interest = context.Interests.SingleOrDefault(i => i.Id == interestId);
             if (interest == null)
             {
-                return Results.NotFound();
+                return Results.NotFound($"Interest with id:{interestId} not found!");
             }
             //adding the link connected to the person and interest.
             var link = new InterestWebLink { Link = interestWebLink.Link, Interests = interest, Persons = person };
@@ -39,10 +39,10 @@ namespace Lab3_Mini_Projekt.Model
         }
         public static IResult ShowLinksOfOnePerson(ApplicationContext context, int personId)
         {   //Fetching the person with given id and include its weblinks
-            Person? person = context.Persons.Where(p=>p.Id == personId).Include(p=>p.InterestWebLinks).FirstOrDefault();
+            Person? person = context.Persons.Where(p=>p.Id == personId).Include(p=>p.InterestWebLinks).SingleOrDefault();
             if (person == null)
             {
-                return Results.NotFound();
+                return Results.NotFound($"Person with id:{personId} not found!");
             }
             //fetching persons weblinks and creating a view of them.
             var intersetWebLinkView = person.InterestWebLinks.Select(theLink => new InterestWebLinkView()

@@ -29,7 +29,7 @@ namespace Lab3_Mini_Projekt.Model
             Person? person = context.Persons.Where(p => p.Id == personId).Include(p=> p.Interests).Include(p => p.InterestWebLinks).FirstOrDefault();
             if (person == null)
             {
-                return Results.NotFound();
+                return Results.NotFound($"Person with id:{personId} not found!");
             }
             //fetching all the info of the person and creating a view of them.
             var personView = new PersonView()

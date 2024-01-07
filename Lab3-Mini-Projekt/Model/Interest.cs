@@ -27,10 +27,10 @@ namespace Lab3_Mini_Projekt.Model
         public static IResult AddInterestToPerson(ApplicationContext context, Interest interest, int personId)
         {
             //fetching the person with matching id
-            var person = context.Persons.Include(p => p.Interests).FirstOrDefault(p => p.Id == personId);
+            Person? person = context.Persons.Include(p => p.Interests).SingleOrDefault(p => p.Id == personId);
             if (person == null)
             {
-                return Results.NotFound();
+                return Results.NotFound($"Person with id:{personId} not found!");
             }
 
             //adding the link connected to the person and interest.
@@ -44,9 +44,17 @@ namespace Lab3_Mini_Projekt.Model
         public static IResult ConnectPersonToInterest(ApplicationContext context, int personId, int interestId)
         {
             //fetching the interest with matching id
-            Interest interest = context.Interests.Where(i => i.Id == interestId).Single();
+            Interest? interest = context.Interests.Where(i => i.Id == interestId).SingleOrDefault();
+            if (interest == null)
+            {
+                return Results.NotFound($"Interest with id:{interestId} not found!");
+            }
             //fetching the person + their intereset with matching id 
-            Person person = context.Persons.Include(p => p.Interests).Single(p => p.Id == personId);
+            Person? person = context.Persons.Include(p => p.Interests).SingleOrDefault(p => p.Id == personId);
+            if (person == null)
+            {
+                return Results.NotFound($"Person with id:{personId} not found!");
+            }
 
             //adding the interest to the person
             person.Interests.Add(interest);
@@ -58,7 +66,7 @@ namespace Lab3_Mini_Projekt.Model
             Person? person = context.Persons.Where(p => p.Id == personId).Include(p => p.Interests).FirstOrDefault();
             if (person == null)
             {
-                return Results.NotFound();
+                return Results.NotFound($"Person with id:{personId} not found!");
             }
             //fetching persons interests and creating a view of them with their Id, interestName and description.
             var interestView = person.Interests.Select(theInterest => new InterestView()
