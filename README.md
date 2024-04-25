@@ -99,7 +99,7 @@
 > <BR>
 >🔸*Use the endpoint "/person/person-id/interest-id/interest-web-link"*
 ><br>
->🔸*E.G. → **POST**: http://localhost:5136/person/person-id/interest-id/interest-web-link*
+>🔸*E.G. → **POST**: http://localhost:5136/person/1/5/interest-web-link*
 >>**Input:**
 >><BR> 
 >>![AddWebLinkToPersonAndInterest](https://github.com/mmxzps/Lab3-Mini-Projekt/assets/99285003/b1a28aec-236a-415c-b355-c9d7094ce791)
@@ -115,7 +115,7 @@
 > <BR>
 >🔸*Use the endpoint "/person/person-id/interest-web-link/links"*
 ><br>
->🔸*E.G. → **GET**: http://localhost:5136/person/person-id/interest-web-link/links*
+>🔸*E.G. → **GET**: http://localhost:5136/person/1/interest-web-link/links*
 >>
 >>**Output:**
 >><BR> 
